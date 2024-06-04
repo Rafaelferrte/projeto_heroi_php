@@ -26,23 +26,43 @@
         <hr>
 
         <?php
+        //Estrutura de condição dos inputs do usuario
         if (isset($_POST["campo_heroi"]) && isset($_POST["campo_universo"])) {
-            $heroi = $_POST["campo_heroi"];
-            $universo = $_POST["campo_universo"];
+            $heroi = strtolower($_POST["campo_heroi"]);
+            $universo = strtolower($_POST["campo_universo"]);
             $imagem = "";
 
-            if ($universo == "Marvel") {
-                if ($heroi == "Wolverine") {
+            if ($universo == "marvel") {
+                if ($heroi == "wolverine") {
                     $imagem = "./imgs/wolverine.jpg";
+                } else if ($heroi == "deadpool") {
+                    $imagem = "./imgs/deadpool.webp";
+                } else if ($heroi == "homem formiga") {
+                    $imagem = "./imgs/homem-formiga.webp";
+                } else if ($heroi == "homem aranha") {
+                    $imagem = "./imgs/homem-aranha.jpg";
+                } else if ($heroi == "doutor estranho") {
+                    $imagem = "./imgs/dr-estranho.jpg";
                 }
-            } else if ($universo == "DC") {
-                // Adicione lógica para heróis da DC aqui
+            } else if ($universo == "dc") {
+                if ($heroi == "batman") {
+                    $imagem = "./imgs/batman.jpeg";
+                } else if ($heroi == "cyborg") {
+                    $imagem = "./imgs/cyborg.jpg";
+                } else if ($heroi == "robin") {
+                    $imagem = "./imgs/robin.webp";
+                } else if ($heroi == "aquaman") {
+                    $imagem == "./imgs/aquaman.jpeg";
+                } else if ($heroi == "flash") {
+                    $imagem = "./imgs/flash.webp";
+                }
             }
 
+            //Exibir a imagem
             if (!empty($imagem)) {
                 echo "<img src='" . $imagem . "' alt='Imagem do Herói' width='300' height='200'>";
             } else {
-                echo '<h4>Herói não encontrado no universo especificado</h4>';
+                echo '<h4>Herói não encontrado</h4>';
             }
         } else {
             echo '<h4>*Preencha os campos</h4>';
